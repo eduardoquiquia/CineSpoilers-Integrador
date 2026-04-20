@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@300;400;600&display=swap');
+
+@theme {
+    --color-cp-blue-dark: #000814;
+    --color-cp-blue-mid: #001b4c;
+    --color-cp-blue-light: #00aae4;
+    --color-cp-gray: #050d1a;
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+}
+
+@layer base {
+    html {
+        /* El estándar es 16px. Subirlo a 110% o 115% hará que todo respire mejor */
+        font-size: 140%; 
+    }
+}
+
+/* Clip-path diagonal tipo Cineplanet */
+.clip-diagonal {
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+.clip-diagonal-sm {
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+
+/* Scrollbar oscura */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000814; }
+::-webkit-scrollbar-thumb { background: #00aae4; border-radius: 3px; }
+
+/* Grano cinematográfico sutil */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 150px;
+    opacity: 0.4;
+}
